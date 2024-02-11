@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 
 let name='divy';
+const arr_colorpalletes=["primary","success","danger","light","dark","warning"];
 function App() {
   const [mode,setmode]=useState('light');
   const [alert,setAlert]=useState(null);
@@ -25,17 +26,24 @@ function App() {
       setAlert(null);
     }, 2000);
   }
-  const func_changemode=()=>{
-    if(mode==='light'){
-      setmode('dark');
-      document.body.style.backgroundColor='black'
-      showalert("Dark mode has been enabled","success");
-    }
-    else{
-      setmode('light');
-      document.body.style.backgroundColor='white'
-      showalert("Light mode has been enabled","success");
-    }
+
+  const remove_allcolors=()=>{
+    for(var i=0;i<arr_colorpalletes.length;i++){
+    document.body.classList.remove('bg-'+arr_colorpalletes[i]);}
+  }
+  const func_changemode=(cls)=>{
+    remove_allcolors();
+    document.body.classList.add('bg-'+cls);
+    // if(mode==='light'){
+    //   setmode('dark');
+    //   document.body.style.backgroundColor='black'
+    //   showalert("Dark mode has been enabled","success");
+    // }
+    // else{
+    //   setmode('light');
+    //   document.body.style.backgroundColor='white'
+    //   showalert("Light mode has been enabled","success");
+    // }
   }
   return (
     <>
